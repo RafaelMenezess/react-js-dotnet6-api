@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { FiPower } from "react-icons/fi";
+import { FiPower, FiEdit, FiTrash2 } from "react-icons/fi";
 import "./styles.css";
 import logoImage from "../../assets/logo.svg";
 
@@ -19,6 +19,81 @@ export default function Book() {
           <FiPower size={18} color="#251FC5" />
         </button>
       </header>
+      <h1>Register Books</h1>
+      <ul>
+        <li>
+          <strong>Title:</strong>
+          <p>Docker deep Dive</p>
+          <strong>Autor:</strong>
+          <p>Nigel Poulton</p>
+          <strong>Price:</strong>
+          <p>R$ 47,90</p>
+          <strong>Release Date:</strong>
+          <p>17/04/2021</p>
+
+          <button type="button">
+            <FiEdit size={20} color="#251FC5" />
+          </button>
+
+          <button type="button">
+            <FiTrash2 size={20} color="#251FC5" />
+          </button>
+        </li>
+        <li>
+          <strong>Title:</strong>
+          <p>Docker deep Dive</p>
+          <strong>Autor:</strong>
+          <p>Nigel Poulton</p>
+          <strong>Price:</strong>
+          <p>R$ 47,90</p>
+          <strong>Release Date:</strong>
+          <p>17/04/2021</p>
+
+          <button type="button">
+            <FiEdit size={20} color="#251FC5" />
+          </button>
+
+          <button type="button">
+            <FiTrash2 size={20} color="#251FC5" />
+          </button>
+        </li>
+        <li>
+          <strong>Title:</strong>
+          <p>Docker deep Dive</p>
+          <strong>Autor:</strong>
+          <p>Nigel Poulton</p>
+          <strong>Price:</strong>
+          <p>R$ 47,90</p>
+          <strong>Release Date:</strong>
+          <p>17/04/2021</p>
+
+          <button type="button">
+            <FiEdit size={20} color="#251FC5" />
+          </button>
+
+          <button type="button">
+            <FiTrash2 size={20} color="#251FC5" />
+          </button>
+        </li>
+        <li>
+          <strong>Title:</strong>
+          <p>Docker deep Dive</p>
+          <strong>Autor:</strong>
+          <p>Nigel Poulton</p>
+          <strong>Price:</strong>
+          <p>R$ 47,90</p>
+          <strong>Release Date:</strong>
+          <p>17/04/2021</p>
+
+          <button type="button">
+            <FiEdit size={20} color="#251FC5" />
+          </button>
+
+          <button type="button">
+            <FiTrash2 size={20} color="#251FC5" />
+          </button>
+        </li>
+      </ul>
     </div>
   );
 }
