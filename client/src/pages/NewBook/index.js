@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { FiArrowLeft } from "react-icons/fi";
 import "./styles.css";
@@ -8,16 +8,45 @@ import api from "../../services/api";
 export default function NewBook() {
   const navigate = useNavigate();
 
+  const [id, setId] = useState(null);
   const [author, setAuthor] = useState("");
   const [title, setTitle] = useState("");
   const [launchDate, setLaunchDate] = useState("");
   const [price, setPrice] = useState("");
   const { bookId } = useParams();
 
+  const accessToken = localStorage.getItem("accessToken");
+  const auth = {
+    headers: {
+      Authorization: `Bearer ${accessToken}`,
+    },
+  };
+
+  useEffect(() => {
+    if (bookId === "0") return;
+    else loadBook();
+  }, bookId);
+
+  async function loadBook() {
+    try {
+      const response = await api.get(`api/book/v1/${bookId}`, auth);
+
+      let ajusteDate = response.data.launchDate.split("T", 10)[0];
+
+      setId(response.data.id);
+      setTitle(response.data.title);
+      setAuthor(response.data.author);
+      setPrice(response.data.price);
+      setLaunchDate(ajusteDate);
+    } catch (err) {
+      alert("Error recovering Book! Try Again");
+      navigate("/books");
+    }
+  }
+
   async function createNewBook(e) {
     e.preventDefault();
 
-    const accessToken = localStorage.getItem("accessToken");
     const data = {
       title,
       author,
@@ -25,11 +54,7 @@ export default function NewBook() {
       price,
     };
     try {
-      await api.post("/api/Book/v1", data, {
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-        },
-      });
+      await api.post("/api/Book/v1", data, auth);
     } catch (err) {
       alert("Error while recording Book! Try again");
     }
