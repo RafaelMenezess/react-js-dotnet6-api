@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { FiArrowLeft } from "react-icons/fi";
 import "./styles.css";
 import logoImage from "../../assets/logo.svg";
@@ -12,6 +12,7 @@ export default function NewBook() {
   const [title, setTitle] = useState("");
   const [launchDate, setLaunchDate] = useState("");
   const [price, setPrice] = useState("");
+  const { bookId } = useParams();
 
   async function createNewBook(e) {
     e.preventDefault();

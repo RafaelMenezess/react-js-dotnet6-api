@@ -31,10 +31,18 @@ export default function Books() {
         },
       });
 
-      localStorage.clear();
+      //localStorage.clear();
       navigate("/");
     } catch (err) {
       alert("Logout failed! Try Again!");
+    }
+  }
+
+  async function editBook(id) {
+    try {
+      navigate(`/book/new/${id}`);
+    } catch (err) {
+      alert("Edit book failed! Try Again!");
     }
   }
 
@@ -59,7 +67,7 @@ export default function Books() {
         <span>
           Welcome, <strong>{userName.toLowerCase()}</strong>!
         </span>
-        <Link className="button" to="/book/new">
+        <Link className="button" to="/book/new/0">
           Add New Book
         </Link>
         <button onClick={logout} type="button">
@@ -86,7 +94,7 @@ export default function Books() {
               {Intl.DateTimeFormat("pt-BR").format(new Date(book.launchDate))}
             </p>
 
-            <button type="button">
+            <button onClick={() => editBook(book.id)} type="button">
               <FiEdit size={20} color="#251FC5" />
             </button>
 
